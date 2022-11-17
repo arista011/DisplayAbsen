@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+  body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .bg-img {
+    /* The image used */
+    background-image: url("Foto RSBH.jpg");
+
+    /* Add the blur effect */
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  h1{
+    text-align: center;
+  }
+  .bg-text {
+    background-color: white; /* Black w/opacity/see-through */
+    color: Black;
+    font-weight: 10PX;
+    font-size: 40PX;
+    border: 1px solid Black;
+    border-radius: 15px;
+    position: fixed;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 90%;
+    padding: 5px;
+  }
+  thead{
+    font-size: 30px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  tbody{
+    font-size: 28px;
+  }
+  th{
+    text-align: center;
+  }
+
+  </style>
+  <body>
+    <div class="bg-img"></div>
+    <section id='absenTable'>
+      <div class="bg-text">
+        <h1 > ABSENSI KARYAWAN </h1>
+        <table id="table_absen" class="table table-striped">
+          <thead bgcolor="#0a5aca" text-align="center">
+            <tr>
+              <th>TANGGAL</th>
+              <th>KETERANGAN</th>
+              <th>NIK</th>
+              <th>NAMA KARYAWAN</th>
+            </tr>
+          </thead>
+          <tbody id="table">
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <script>
+      $(document).ready(function () {
+        setInterval(function() {
+          table()
+        }, 5000); // This will load data every 5 seconds
+      });
+
+      function table(){
+        $.ajax({
+          url: "http://10.103.0.23/test_oracle.php?action=table",
+          method: "GET",
+          dataType: "JSON",
+          success:function(res){
+            $('#table_absen').DataTable({
+              data: res,
+              destroy: true,
+              dom: 'Bfrtip',
+              ordering: false,
+              searching: false,
+              info: false,
+              paging: false,
+              "columns": [
+              { "render": function(data,type,full){
+                return full['TIME'] + ' ' + full['JAM'];
+              }},
+              { "data": "IOMODE" },
+              { "data": "NOKAR"},
+              { "data": "NAMA_KAR" }
+              ]
+            });
+          }
+        });
+      }
+    </script>
+
+  </body>
+  </html>
