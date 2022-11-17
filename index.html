@@ -18,21 +18,12 @@
     box-sizing: border-box;
   }
 
-  .bg-img {
+  .bg-1 {
     /* The image used */
-    background-image: url("Foto RSBH.jpg");
-
-    /* Add the blur effect */
-    filter: blur(3px);
-    -webkit-filter: blur(3px);
-
-    /* Full height */
-    height: 100%;
-
+    background-image: url("image/1.jpg");
     /* Center and scale the image nicely */
-    background-position: center;
+    background-position: left;
     background-repeat: no-repeat;
-    background-size: cover;
   }
 
   h1{
@@ -65,18 +56,43 @@
     text-align: center;
   }
 
-  </style>
-  <body>
-    <div class="bg-img"></div>
-    <section id='absenTable'>
-      <div class="bg-text">
-        <h1 > ABSENSI KARYAWAN </h1>
+</style>
+<head>
+    <img class="bg-1">
+    <span style='display:block; float:right; margin: 14px 0px 0 0;'>
+        <p style='margin: 0 auto; font-size: 11px; color:red;'>
+        Jl. Mayor Oking Jaya Atmaja KM 1 No. 101<br />
+        Cibinong, Bogor 16918<br />
+        T : (021) 87911000,  F : (021) 8752463<br />
+        W : www.binahusada.com<br/>
+        E : cibinong@binahusada.com<br/>
+        </p>
+    </span>
+      <span style='display:block; float:right; margin: 13px 15px 0 0;'>
+      <div style='border-left: 3px solid red; height: 65px; '></div>
+      </span>
+      <br style='clear:both; line-height: 20px;' />
+      <hr style='display:block; margin: 14px 0px 0 20px;' />
+      <p>
+      </p><p>
+      </p><p>
+      </p><p>
+      </p><p>
+      </p><p>
+      </p><p>
+      	</br>
+          <p style='font-size: 11px; float:left; margin: 14px 0px 0 20px;'>Dari Tanggal $tgl1 Sampai Tanggal $tgl2</p>
+      	</br>
+      ";
+</head>
+<body>
         <table id="table_absen" class="table table-striped">
           <thead bgcolor="#0a5aca" text-align="center">
             <tr>
               <th>TANGGAL</th>
               <th>KETERANGAN</th>
               <th>NIK</th>
+              <th>BAGIAN</th>
               <th>NAMA KARYAWAN</th>
             </tr>
           </thead>
@@ -113,6 +129,7 @@
               }},
               { "data": "IOMODE" },
               { "data": "NOKAR"},
+              { "data": "BAGIAN"},
               { "data": "NAMA_KAR" }
               ]
             });

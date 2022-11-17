@@ -28,7 +28,7 @@ h2 {
   }
   .table-header {
     background-color: #95A5A6;
-    font-size: 14px;
+    font-size: 20px;
     text-transform: uppercase;
     letter-spacing: 0.03em;
   }
@@ -48,21 +48,21 @@ h2 {
   .col-4 {
     flex-basis: 25%;
   }
-  
+
   @media all and (max-width: 767px) {
     .table-header {
       display: none;
     }
     .table-row{
-      
+
     }
     li {
       display: block;
     }
     .col {
-      
+
       flex-basis: 100%;
-      
+
     }
     .col {
       display: flex;
@@ -73,6 +73,19 @@ h2 {
         content: attr(data-label);
         flex-basis: 50%;
         text-align: right;
+      }
+      thead{
+        background-color: #0a5aca;
+        font-size: 30px;
+        border-radius: 8px;
+        text-align: center;
+      }
+      tbody{
+        text-align: left;
+        font-size: 28px;
+      }
+      th{
+        text-align: center;
       }
     }
   }
