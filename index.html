@@ -19,13 +19,16 @@
   }
 
   img {
-    height: 150px;
-    width: 300px;
+    height: 80px;
+    width: 225px;
     margin: auto;
   }
 
   h1{
     text-align: center;
+  }
+  h6{
+    text-align: right;
   }
   .bg-text {
     color: Black;
@@ -35,24 +38,24 @@
     position: fixed;
     top: 55%;
     left: 50%;
-    transform: translate(-50%, -50%);
     z-index: 2;
     width: 90%;
     padding: 5px;
   }
   thead{
-    font-size: 30px;
+    font-size: 20px;
     border-radius: 8px;
   }
   tbody{
-    font-size: 25px;
+    font-size: 20px;
     font-weight: bold;
     color: black;
     border: 1px;
+    margin: auto;
   }
+
   p{
-    font-size: 18px;
-    color: red;
+    font-size: 15px;
   }
 
 
@@ -60,22 +63,18 @@
 <head>
     <img src='image/2.png'/>
     <span style='display:block; float:right; margin: 14px 0px 0 0;'>
+      <h6>Jalan Raya Mayor Oking Jaya Atmaja No.KM, RW No.101 <br/>
+         Ciriung, Kec. Cibinong, Kabupaten Bogor <br/>
+         Jawa Barat 16917</h6>
     </span>
       <span style='display:block; float:right; margin: 13px 15px 0 0;'>
       </span>
-      <br style='clear:both; line-height: 20px;' />
       <hr style='display:block; margin: 14px 0px 0 20px;' />
-      <p>
-      </p><p>
-      </p><p>
-      </p><p>
-      </p><p>
-      </p><p>
-      </p>
+      <p></p>
 </head>
 <body>
         <table id="table_absen" class="table table-striped">
-          <thead bgcolor="#0a5aca" text-align="center">
+          <thead bgcolor="#6fa8dc" text-align="center">
             <tr>
               <th>TANGGAL</th>
               <th>KETERANGAN</th>
@@ -93,7 +92,7 @@
       $(document).ready(function () {
         setInterval(function() {
           table()
-        }, 5000); // This will load data every 5 seconds
+        }, 1000); // This will load data every 5 seconds
       });
 
       function table(){
@@ -112,15 +111,15 @@
               paging: false,
               "columns": [
               { "render": function(data,type,full){
-                return full['TIME'] + ' ' + full['JAM'];
+                return full['CREATED_DATE'] + '<br><p>' + full['JAM'] + '</p>';
               }},
               { "data": "IOMODE" },
               { "data": "NOKAR"},
               { "render": function(data,type,full){
-                if(data == "null")
-                {return full['-'] + '' + full['-'];}
+                if(data == null)
+                {return full['']+full[''];}
                 else{
-                return full['NAMA_KAR'] + '<br><p>' + full['BAGIAN'] + '</p>';
+                return full['NAMA_KAR'] + '<br><p>' + full['BAGIAN']+ '</p>';
               }}}
               ]
             });
